@@ -9,12 +9,15 @@
     <script src="js.js"></script>
 </head>
 <body>
-
-    <p class="NuberOfGroups">Mengde grupper: <input class="numgroups" type="integer" value="" /></p>
-    
-    <p><textarea name="people" id="people" cols="40" rows="15"></textarea>
-    
-    <button id="generateButton">Lag Grupper</button>
-    <div class="groups" id="output"></div>
+    <div class="container">
+        <div class="box">
+            <button id="generateButton">Generate Groups</button>
+            <textarea id="people" placeholder="Enter names here"></textarea>
+            <input type="number" class="numgroups" placeholder="Number of Groups">
+            <div id="output" class="output">
+                <!-- Groups will be displayed here -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
