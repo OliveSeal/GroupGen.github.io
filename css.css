@@ -1,23 +1,24 @@
 body {
-    font-family: sans-serif;
-  }
-  
-  textarea {
-    height: 275px;
-    width: 175px;
-    resize: none;
-  }
-  
-  table {
-    text-align:left;
-  }
-  
-  #result {
-    background-color: white;
-    border-radius: 3px;
-    margin-top: 10px;
-    padding-left: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 300px;
-  }
+  background-color: #a3d5d3;
+  font-family: sans-serif;
+}
+
+textarea {
+  width: 125px;
+  height: 175px;
+  resize: none;
+}
+
+table {
+  text-align:left;
+}
+
+#result {
+  background-color: #a3d5d3;
+  border-radius: 3px;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 300px;
+}
