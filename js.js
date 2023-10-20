@@ -1,36 +1,35 @@
-$('button').on('click', function(e) {
-	e.preventDefault();
-	var namespergroup = parseInt($('.pergroup').val()),
-		allnames = $('textarea').val().split('\n'),
-		allnameslen = allnames.length;
+document.addEventListener("DOMContentLoaded", () => {
+  const generateButton = document.getElementById("generateButton");
+  const peopleTextarea = document.getElementById("people");
+  const numGroupsInput = document.querySelector(".numgroups");
+  const outputDiv = document.getElementById("output");
 
-	var numgroups = Math.ceil(allnameslen / namespergroup);
-	
-	if($('.numgroups').val()){
-		numgroups = parseInt($('.numgroups').val());
-		namespergroup = allnameslen / numgroups;
-	}
+  generateButton.addEventListener("click", () => {
+    const numGroups = parseInt(numGroupsInput.value);
+    const peopleList = peopleTextarea.value.trim().split('\n').filter(Boolean);
 
-	$('.groups').empty();
+    outputDiv.innerHTML = '';
+    
+    if (isNaN(numGroups) || numGroups <= 0 || peopleList.length < numGroups) {
+      outputDiv.innerHTML = "Invalid input. Please check the number of groups and people.";
+      return;
+    }
 
-	for (i = 0; i < numgroups; i++) {
-		$('.groups').append('<div class="group" id="group' + (i+1) + '"><h2>Group ' + (i+1) + '</h2></div>');
-	}
+    shuffleArray(peopleList);
 
-	$('.group').each(function() {
-		for (j = 0; j < namespergroup; j++) {
-			var randname = Math.floor(Math.random() * allnames.length);
-			if(allnames[randname]){
-				$(this).append('<p>' + allnames[randname] + '</p>');
-			}
-			allnames.splice(randname, 1);
-			console.log(allnames);
-		}
-	});
+    const groups = Array.from({ length: numGroups }, () => []);
+
+    peopleList.forEach((person, index) => groups[index % numGroups].push(person));
+
+    outputDiv.innerHTML = groups.map((group, index) => `
+      <div>
+        <h3>Group ${index + 1}:</h3>
+        <ul>${group.map(person => `<li>${person}</li>`).join("")}</ul>
+      </div>
+    `).join("");
+  });
 });
 
-$('.toggle-wrap a').on('click', function(e){
-	e.preventDefault();
-	$('.wrap').toggleClass('alt');
-	$('.pergroup-wrap, .numgroups-wrap').find('input').val('');
-});
+function shuffleArray(array) {
+  array.sort(() => Math.random() - 0.5);
+}
