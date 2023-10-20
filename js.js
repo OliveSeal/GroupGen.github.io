@@ -1,4 +1,7 @@
+
+//addEventListener "DOMContentLoaded" gjer at den venter til HTML sida har lasta inn fyrst.
 document.addEventListener("DOMContentLoaded", () => {
+  //og her henter det nokon DOM objekt
   const generateButton = document.getElementById("generateButton");
   const peopleTextarea = document.getElementById("people");
   const numGroupsInput = document.querySelector(".numgroups");
